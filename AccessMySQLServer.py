@@ -14,10 +14,16 @@ with open("EncodedPasswords.txt", "r") as filestream:
 ServerPass = base64.b64decode(EncServerPass)
 MySQLPass = base64.b64decode(EncMySQLPass)
 
+# Initializing required variables
+ServerAdress = '66.76.242.194'
+ServerUserName = 'ambekarakhil'
+MySQLUserName = 'ambekarakhil'
+DatabaseName = 'ambekarakhil'
+
 # SSH linux server
 server = SSHTunnelForwarder(
-    '66.76.242.194',
-    ssh_username='ambekarakhil',
+    ServerAdress,
+    ssh_username= ServerUserName,
     ssh_password= ServerPass,
     remote_bind_address=('127.0.0.1', 3306)
 )
@@ -27,9 +33,9 @@ server.start()
 cnx = pymysql.connect(
     host='127.0.0.1',
     port=server.local_bind_port,
-    user='ambekarakhil',
+    user= MySQLUserName,
     password= MySQLPass,
-    db='ambekarakhil'
+    db= DatabaseName
 )
 
 print("Connected to the following MySQL Server: " + cnx.get_server_info())
