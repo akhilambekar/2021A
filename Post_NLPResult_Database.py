@@ -13,6 +13,7 @@ from pymysql.converters import escape_string
 
 from stanfordcorenlp import StanfordCoreNLP
 import json
+from json2html import *
 
 from collections import defaultdict
 
@@ -105,6 +106,7 @@ def text_output(submit_n_clicks,value, name, email, phone):
         #------------Generate encrypted password---------------------------
         #EncodedServerPass = base64.b64encode("ServerPass".encode("utf-8"))
         #EncodedMySQLPass = base64.b64encode("MySQLPass".encode("utf-8"))
+        #------------------------------------------------------------------
 
         with open("EncodedPasswords.txt", "r") as filestream:
             for line in filestream:
@@ -142,7 +144,7 @@ def text_output(submit_n_clicks,value, name, email, phone):
         print("Connected to the following MySQL Server: " + cnx.get_server_info())
 
         # Add escape string (\\") for double quotes present in the json data, removes any conflict with insert statement
-        json_data = json.dumps(Json_data)
+        json_data_sql = json.dumps(Json_data)
 
         CountVal = 3
         TeacherVal = name
@@ -154,7 +156,7 @@ def text_output(submit_n_clicks,value, name, email, phone):
     
             cur.execute('use ambekarakhil;')
             sql_command = """INSERT INTO verus0302c(count, teacher, assertion, nlp, linkages) VALUES (%s, %s, %s, %s, %s)""" 
-            cur.execute(sql_command, (CountVal, TeacherVal, AssertionVal, json_data, LinkageVal))
+            cur.execute(sql_command, (CountVal, TeacherVal, AssertionVal, json_data_sql, LinkageVal))
 
         cnx.commit()
 
@@ -176,6 +178,19 @@ def text_output(submit_n_clicks,value, name, email, phone):
 
         
         return "submitted {} times; user info: [ Name: {} | Email: {} | Phone Number: {} ]".format(submit_n_clicks, name, email, phone)
+
+        # Convert the JSON result in a tabular format with HTML tags
+        jsontohtml = json2html.convert(json = Json_data);
+
+        #---------------Will expand this code to add more complex tasks --------------------
+        # Display the HTML code in a new browser
+        import webbrowser
+        f = open('JSONResult.html','w')
+        #f.write(jsontohtml)
+        f.close()
+
+        webbrowser.open_new_tab('JSONResult.html')
+        #---------------Will expand this code to add more complex tasks --------------------
         
 
 if __name__ == "__main__":
