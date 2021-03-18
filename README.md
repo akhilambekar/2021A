@@ -2,7 +2,7 @@
 Repo for code from the A team.
 
 # Steps
-C:\ python Post_NLPResult_Database.py
+C:\ python Post_NLPResult_Database.py.
 The code displays a URL on the command prompt.
 Open web brower and enter the url shown in the command prompt.
 Enter the required details in the web browser and click submit.
