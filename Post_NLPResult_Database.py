@@ -177,7 +177,7 @@ def text_output(submit_n_clicks,value, name, email, phone):
 
 
         
-        return "submitted {} times; user info: [ Name: {} | Email: {} | Phone Number: {} ]".format(submit_n_clicks, name, email, phone)
+        #return "submitted {} times; user info: [ Name: {} | Email: {} | Phone Number: {} ]".format(submit_n_clicks, name, email, phone)
 
         # Convert the JSON result in a tabular format with HTML tags
         jsontohtml = json2html.convert(json = Json_data);
@@ -186,7 +186,7 @@ def text_output(submit_n_clicks,value, name, email, phone):
         # Display the HTML code in a new browser
         import webbrowser
         f = open('JSONResult.html','w')
-        #f.write(jsontohtml)
+        f.write(jsontohtml)
         f.close()
 
         webbrowser.open_new_tab('JSONResult.html')
