@@ -20,6 +20,8 @@ from collections import defaultdict
 
 app = dash.Dash(__name__)   #external_stylesheets=[dbc.themes.SUPERHERO]
 
+appserver = app.server
+
 graph_card = dbc.Card([
     
                     dbc.CardBody([
@@ -124,7 +126,7 @@ def text_output(submit_n_clicks,value, name, email, phone):
         #Make a database connection
         cnx = pymysql.connect(
             host='127.0.0.1',
-            port=server.local_bind_port,
+            port=3306,
             user= MySQLUserName,
             password= MySQLPass,
             db = DatabaseName
