@@ -7,7 +7,6 @@ import dash_core_components as dcc
 import requests
 import json
 import base64
-from sshtunnel import SSHTunnelForwarder
 import pymysql
 from pymysql.converters import escape_string
 
