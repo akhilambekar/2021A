@@ -166,7 +166,7 @@ def text_output(submit_n_clicks,value, name, email, phone):
         cnx.close()
 
         
-        #return "submitted {} times; user info: [ Name: {} | Email: {} | Phone Number: {} ]".format(submit_n_clicks, name, email, phone)
+        return "submitted {} times; user info: [ Name: {} | Email: {} | Phone Number: {} ]".format(submit_n_clicks, name, email, phone)
 
         # Convert the JSON result in a tabular format with HTML tags
         jsontohtml = json2html.convert(json = Json_data);
