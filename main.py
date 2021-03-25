@@ -170,16 +170,6 @@ def text_output(submit_n_clicks,value, name, email, phone):
 
         # Convert the JSON result in a tabular format with HTML tags
         jsontohtml = json2html.convert(json = Json_data);
-
-        #---------------Will expand this code to add more complex tasks --------------------
-        # Display the HTML code in a new browser
-        import webbrowser
-        f = open('JSONResult.html','w')
-        f.write(jsontohtml)
-        f.close()
-
-        webbrowser.open_new_tab('JSONResult.html')
-        #---------------Will expand this code to add more complex tasks --------------------
         
 
 if __name__ == "__main__":
