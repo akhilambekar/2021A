@@ -8,7 +8,6 @@ from flask import render_template
 import requests
 import json
 import base64
-from sshtunnel import SSHTunnelForwarder
 import pymysql
 from pymysql.converters import escape_string
 
@@ -137,15 +136,6 @@ def text_output(submit_n_clicks,value, name, email, phone):
         MySQLUserName = 'ambekarakhil'
         DatabaseName = 'ambekarakhil'
 
-        # SSH linux server
-        server = SSHTunnelForwarder(
-            ServerAdress,
-            ssh_username= ServerUserName,
-            ssh_password= ServerPass,
-            remote_bind_address = ('127.0.0.1', 3306)
-        )
-
-        server.start()
 
         #Make a database connection
         cnx = pymysql.connect(
