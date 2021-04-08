@@ -140,7 +140,7 @@ def text_output(submit_n_clicks,value, name, email, phone):
         #Make a database connection
         cnx = pymysql.connect(
             host='127.0.0.1',
-            port=server.local_bind_port,
+            port=3306,
             user= MySQLUserName,
             password= MySQLPass,
             db = DatabaseName
