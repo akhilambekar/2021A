@@ -179,7 +179,6 @@ def text_output(submit_n_clicks,value, name, email, phone):
         """
         # Close all connections
         cnx.close()
-        server.stop()
 
         # # Convert the JSON result in a tabular format with HTML tags
         # jsontohtml = json2html.convert(json = Json_data);
