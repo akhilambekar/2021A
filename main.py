@@ -29,6 +29,7 @@ from tabulate import tabulate
 
 app = dash.Dash(__name__)   #external_stylesheets=[dbc.themes.SUPERHERO]
 
+appserver = app.server
 
 graph_card = dbc.Card([
     
